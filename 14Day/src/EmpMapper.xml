@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="emp">
+ <insert id="aaa"> 
+ 	insert into dept (deptno, dname, loc)
+ 	values( 22, 'lll', 'uuu' )
+  </insert>
+   <insert id="bbb" parameterType="com.entity.DeptDTO">      <!--parameterType은 패키지까지 같이 준다 .으로 구분  -->  
+ 	insert into dept (deptno, dname, loc)
+ 	values( #{deptno}, #{dname}, #{loc} )                                  <!--deptDTO의 변수값을 넣는데 변수명과 이름  같다   -->
+  </insert>
+
+</mapper>

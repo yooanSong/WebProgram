@@ -1,0 +1,44 @@
+package com.employee.util;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class CommonUtil {
+
+	//100000000 ==>  100,000,000
+	public static String getCurrency(int data){
+		NumberFormat nf =
+				NumberFormat.getCurrencyInstance(Locale.KOREA);
+		return nf.format(data);
+	}
+	
+	public static String getUserInput() {
+		Scanner scan = new Scanner(System.in);
+		return scan.nextLine();
+	}
+	
+	
+	
+	public static String getDate(Date d){
+		String formatData = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		formatData = sdf.format(d.getTime());
+		return  formatData;
+	}
+	public static Date getDate(String cal){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date d = null;
+	   try{	
+		d = sdf.parse(cal);
+	   }catch(ParseException e){
+		   e.printStackTrace();
+	   }
+		return d;
+	}
+	
+	
+}

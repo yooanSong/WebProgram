@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myemp">
+
+	<select id="salEmpXXX" resultType="EmpDTO" parameterType="hashmap">
+		select * from myemp
+		where sal IN ( #{salEmpXXX[0].sal}, #{salEmpXXX[1].sal}, #{salEmpXXX[2].sal})    <!--salXXX 여기엔 ArrayList가 넘어온다 그리고 
+			배열형태로 핸들링한것 -->
+	</select>
+
+<!--resultType=EmpDTO 이건 결과값을 주는거  
+parameterType 이건 service랑 연결해주는 값 
+
+-->
+
+
+
+
+
+	<select id="selectInSal" resultType="EmpDTO" parameterType="hashmap">
+		select * from myemp
+		where sal IN ( #{salXXX[0]}, #{salXXX[1]})    <!--salXXX 여기엔 ArrayList가 넘어온다 그리고 
+			배열형태로 핸들링한것 -->
+	</select>
+
+	<select id="empCount" resultType="int">
+		select count(*) from myemp
+	</select>
+
+	<!--paging -->                                 <!--PAGING이란 원하는 데이터만 뽑아오는 것 -->
+	<select id="salPaging" resultType="EmpDTO">
+		select * from myemp
+		order by sal
+	</select>
+
+	<!--hashmap -->
+	<select id="selectSal" resultType="EmpDTO" parameterType="hashmap">
+		select * from myemp
+		where sal between #{aaa} and #{bbb}     <!--key value의 key값 그래서 의미없는 값인 aaa줌 -->
+	</select>
+
+
+
+</mapper>

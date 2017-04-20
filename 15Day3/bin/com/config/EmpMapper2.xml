@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myemp2">
+  
+   <insert id="insertMulti" parameterType="arraylist">
+     insert all
+     <foreach collection="list" item="xxx">
+       into myemp (empno,ename,hiredate,sal)
+       values (#{xxx.empno},#{xxx.ename},
+       sysdate,#{xxx.sal})
+     </foreach>
+     select * from dual
+   </insert>
+  
+   
+  
+  
+  
+  <delete id="delMulti" parameterType="arraylist">
+     delete from myemp
+     <where>
+      <foreach item="xxx" index="i" collection="list">
+        or sal = #{xxx}
+      </foreach> 
+     </where>
+  </delete>
+  
+  
+  
+  
+  
+  
+  
+  <select id="searchMulti" parameterType="arraylist" 
+  resultType="EmpDTO">
+    select * from myemp
+    <where>
+      sal IN 
+      <foreach item="xxx" index="i" collection="list"
+      open="(" separator="," close=")">
+        #{xxx}
+      </foreach> 
+    </where>
+  </select>
+  
+  
+  
+  <select id="searchEname" parameterType="EmpDTO" 
+    resultType="EmpDTO">
+    select * from myemp
+    <if test="ename != null">
+      where ename = #{ename}
+    </if>
+  </select>
+  
+</mapper>
+
+
+

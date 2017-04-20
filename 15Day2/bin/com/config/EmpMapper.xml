@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myemp">
+  <select id="empCount" resultType="int">
+    select count(*) from myemp
+  </select>
+  <!-- paging -->
+  <select id="salPaging" resultType="EmpDTO">
+    select * from myemp 
+    order by sal
+  </select>
+  
+  <!-- hashmap -->
+  <select id="selectSal" resultType="EmpDTO"
+   parameterType="hashmap">
+    select * from myemp
+    where sal between  #{aaa} and #{bbb} 
+  </select>
+  
+  <select id="selectInSal"  resultType="EmpDTO"
+  parameterType="hashmap" >
+    select * from myemp
+    where sal IN ( #{salXXX[0]}, #{salXXX[1]})
+  </select>
+  
+   <select id="salEmpXXX"  resultType="EmpDTO"
+  parameterType="hashmap" >
+    select * from myemp
+    where sal 
+    IN ( #{salEmpXXX[0].sal}, #{salEmpXXX[1].sal},#{salEmpXXX[2].sal})
+  </select>
+</mapper>
+
+
+

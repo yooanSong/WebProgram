@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!--jdbc.properties등록  -->
+	<properties resource="com/config/jdbc.properties"></properties>
+
+<!--DTO에 해당하는 alias  -->	
+	<typeAliases>	
+	<typeAlias type="com.entity.EmpDTO" alias="EmpDTO"/>
+	</typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED"> 
+        <property name="driver" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.userid}"/>
+        <property name="password" value= "${jdbc.passwd}"/> 
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+      <mapper resource="com/config/EmpMapper.xml" />
+       <mapper resource="com/config/EmpMapper2.xml"/>
+    <!--mapper는 테이블당 하나씩 만들어진다  mapper를 여기에 등록해서 여러개 쓸수있다  -->
+  </mappers> <!-- 패키지를 *. 으로 안쓰고 / 슬러시로 쓴다 패키지는 src에 있으니깐 src에서 찾으면 된다  -->
+</configuration>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myemp">
+	<!--Mapper는 sql문을 작성하는 곳, 이 sql문이 service와 연결되고, service는 Test에서 실행된다   -->
+	
+	<!--Paging 처리하기(원하는 데이터만 뽑기)-->
+	<select id="" parameterType="" resultType="">
+	select * from myemp
+	order by sal
+	</select>
+
+
+
+</mapper>

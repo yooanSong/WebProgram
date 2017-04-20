@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dept">
+<!--map : 하나   -->
+
+
+
+	<!--결과 한개 나오는 select  -->
+	<select id="selectByDeptno" 
+	parameterType="int" resultType="com.entity.DeptDTO">    
+	select deptno, dname, loc
+	from dept
+	where deptno = #{deptno}
+	</select>
+
+	<!--결과 여러개 나오는 select  -->
+	<select id="selectALL" resultType="com.entity.DeptDTO">     
+	select deptno, dname, loc
+	from dept
+	</select>
+
+
+
+	<update id="deptUpdate" parameterType="com.entity.DeptDTO">
+		update dept
+		set dname = #{dname}, loc= #{dname}
+		where deptno = #{deptno}
+	</update>
+
+	<insert id="aaa">
+		insert into dept (deptno, dname, loc)
+		values( 22, 'lll', 'uuu' )
+	</insert>
+
+	<insert id="bbb" parameterType="com.entity.DeptDTO">      <!--parameterType은 패키지까지 같이 준다 .으로 구분 -->
+		insert into dept (deptno, dname, loc)
+		values( #{deptno}, #{dname}, #{loc} )                                  <!--deptDTO의 변수값을 넣는데 변수명과 이름 같다 -->
+	</insert>
+
+	<delete id="deleteByDeptno" parameterType="int">
+		delete from dept where deptno = #{deptno}						<!--deptno로 삭제할거예요 -->
+	</delete>
+
+	<delete id="deleteByDname" parameterType="string">			<!--string는 별칭으로 소문자 쓴것 -->
+		delete from dept where dname= #{dname}						<!--dname로 삭제할거예요 -->
+	</delete>
+
+</mapper>
+
+
+
+

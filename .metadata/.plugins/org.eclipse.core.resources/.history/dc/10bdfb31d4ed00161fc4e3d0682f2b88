@@ -1,0 +1,36 @@
+package workshop3;
+
+public class StudentTest {
+
+	public static void main(String[] args) {
+	 Student studentArray [] =new Student[3];
+	 
+	 Student s = new Student();
+	 s.setName("홍길동");
+	 s.setAge(15);
+	 s.setHeight(171);
+	 s.setWeight(81);
+	 
+	 Student  s2= new Student();
+	 s2.setName("한사람");
+	 s2.setAge(13);
+	 s2.setHeight(183);
+	 s2.setWeight(72);
+	 
+	 Student s3= new Student();
+	 s3.setName("임걱정");
+	 s3.setAge(16);
+	 s3.setHeight(175);
+	 s3.setWeight(65);
+	 
+	for (Student student : studentArray) {
+		System.out.println(s,s2,s3);
+	}
+	 
+	 
+	 
+	 
+
+	}
+
+}
